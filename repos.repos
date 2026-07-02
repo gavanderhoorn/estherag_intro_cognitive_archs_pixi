@@ -1,0 +1,38 @@
+repositories:
+  intro_cognitive_architectures:
+    type: git
+    url: https://github.com/estherag/intro_cognitive_architectures.git
+    version: 6adaa9877bd6f5de9a854f36dc4b18f93b91b6d5  # HEAD on 'main' as of 2026-07-02
+
+  # from https://github.com/estherag/intro_cognitive_architectures/blob/6adaa9877bd6f5de9a854f36dc4b18f93b91b6d5/install.sh#L6
+  deps/yolo_ros:
+    type: git
+    url: https://github.com/mgonzs13/yolo_ros.git
+    version: 4.5.1
+
+  # not available from robostack-jazzy
+  deps/twist_stamper:
+    type: git
+    url: https://github.com/joshnewans/twist_stamper.git
+    version: 0.0.5
+
+  # from https://github.com/IntelligentRoboticsLabs/docker_infrastructure/blob/253a9175345c3fe09fb9ed8eb05408ece6d36429/docker/installation_scripts/simulator.sh#L17-L19,
+  # and https://github.com/estherag/intro_cognitive_architectures/blob/6adaa9877bd6f5de9a854f36dc4b18f93b91b6d5/install.sh#L7
+  deps/aws-robomaker-small-house-world:
+    type: git
+    url: https://github.com/Juancams/aws-robomaker-small-house-world.git
+    version: 37c0bf89ddcd5fc6cafbe011a86fdd93087c95d6  # HEAD on 'ros2-jazzy' as of 2026-07-02
+  deps/mirte-gazebo:
+    type: git
+    url: https://github.com/Juancams/mirte-gazebo.git
+    version: 45d54b45e117e9c463e69f00520bf20a00492c30  # HEAD on 'harmonic' as of 2026-07-02
+  deps/mirte-ros-packages:
+    type: git
+    url: https://github.com/Juancams/mirte-ros-packages.git
+    version: 92b57be19cdb5a6896348374f07302bb180cb7e7  # HEAD on 'jazzy' as of 2026-07-02
+
+  # seems to be a dependency, but this is for Humble and Gazebo Classic?
+  # deps/gazebo_grasp_fix:
+  #   type: git
+  #   url: https://github.com/RCPRG-ros-pkg/gazebo-grasp-plugin.git
+  #   version: humble-grasp-fix

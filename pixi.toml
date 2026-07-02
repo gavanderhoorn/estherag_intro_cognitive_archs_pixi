@@ -1,0 +1,135 @@
+[workspace]
+name = "estherag_intro_cognitive_archs_pixi"
+channels = ["https://prefix.dev/robostack-jazzy", "https://prefix.dev/conda-forge"]
+platforms = ["linux-64"]
+version = "0.1.0"
+
+[dependencies]
+# Base ROS dependencies
+ros-jazzy-ros-base = "*"
+pkg-config = "*"
+compilers = "*"
+make = "*"
+ninja = "*"
+ros-jazzy-ros2cli = "*"
+
+# Build tools
+colcon-common-extensions = "*"
+ccache = "*"
+# version closest to Jazzy
+cmake = "3.28.*"
+
+
+# Workspace dependencies
+#gazebo = "*"
+libabseil = "*"
+libprotobuf = "*"
+#pytest = "*"
+ros-jazzy-ament-cmake = "*"
+ros-jazzy-ament-cmake-gtest = "*"
+ros-jazzy-ament-copyright = "*"
+ros-jazzy-ament-flake8 = "*"
+ros-jazzy-ament-lint-auto = "*"
+ros-jazzy-ament-lint-common = "*"
+ros-jazzy-ament-pep257 = "*"
+ros-jazzy-backward-ros = "*"
+ros-jazzy-control-toolbox = "*"
+ros-jazzy-controller-manager = "*"
+ros-jazzy-cv-bridge = "*"
+ros-jazzy-diagnostic-updater = "*"
+ros-jazzy-diff-drive-controller = "*"
+ros-jazzy-effort-controllers = "*"
+ros-jazzy-filters = "*"
+ros-jazzy-forward-command-controller = "*"
+ros-jazzy-geometry-msgs = "*"
+ros-jazzy-gz-ros2-control = "*"
+ros-jazzy-hardware-interface = "*"
+ros-jazzy-image-common = "*"
+ros-jazzy-image-transport-plugins = "*"
+ros-jazzy-joint-state-broadcaster = "*"
+ros-jazzy-joint-state-publisher = "*"
+ros-jazzy-joint-state-publisher-gui = "*"
+ros-jazzy-joint-trajectory-controller = "*"
+ros-jazzy-mecanum-drive-controller = "*"
+ros-jazzy-message-filters = "*"
+ros-jazzy-moveit-configs-utils = "*"
+ros-jazzy-moveit-kinematics = "*"
+ros-jazzy-moveit-planners = "*"
+ros-jazzy-moveit-ros-move-group = "*"
+ros-jazzy-moveit-ros-visualization = "*"
+ros-jazzy-moveit-setup-assistant = "*"
+ros-jazzy-moveit-simple-controller-manager = "*"
+ros-jazzy-nav-msgs = "*"
+ros-jazzy-pluginlib = "*"
+ros-jazzy-rclcpp = "*"
+ros-jazzy-rclcpp-lifecycle = "*"
+ros-jazzy-rclpy = "*"
+ros-jazzy-rmw-zenoh-cpp = "*"
+ros-jazzy-robot-state-publisher = "*"
+ros-jazzy-ros-gz = "*"
+ros-jazzy-ros-gz-sim = "*"
+ros-jazzy-ros2-controllers = "*"
+ros-jazzy-ros2-controllers-test-nodes = "*"
+ros-jazzy-ros2controlcli = "*"
+ros-jazzy-ros2launch = "*"
+ros-jazzy-rosbridge-server = "*"
+ros-jazzy-rosidl-default-generators = "*"
+ros-jazzy-rosidl-default-runtime = "*"
+ros-jazzy-rviz-common = "*"
+ros-jazzy-rviz-default-plugins = "*"
+ros-jazzy-rviz2 = "*"
+ros-jazzy-sensor-msgs = "*"
+ros-jazzy-std-msgs = "*"
+ros-jazzy-std-srvs = "*"
+ros-jazzy-teleop-twist-keyboard = "*"
+ros-jazzy-tf2 = "*"
+ros-jazzy-tf2-ros = "*"
+ros-jazzy-trajectory-msgs = "*"
+ros-jazzy-twist-mux = "*"
+ros-jazzy-usb-cam = "*"
+ros-jazzy-visualization-msgs = "*"
+ros-jazzy-web-video-server = "*"
+ros-jazzy-xacro = "*"
+ros-jazzy-yaml-cpp-vendor = "*"
+
+# The following packages were not found:
+# gazebo_plugins = "*"
+# gazebo_ros = "*"
+# ign_ros2_control = "*"
+# mirte_telemetrix_cpp = "*"
+
+[tasks]
+fetch = {cmd = "vcs import --input repos.repos src/", description = "Fetch packages"}
+build = {cmd = "colcon build", description = "Build the ROS workspace"}
+ws-clean = {cmd = "rm -rf build install log", description = "Clean build artifacts (build, install, log directories)"}
+clean-build = [{ task = "ws-clean" }, { task = "build" }]
+
+[activation]
+#scripts = ["install/setup.bash"]
+
+[pypi-dependencies]
+vcstool = ">=0.3.0, <0.4"
+
+# from https://github.com/estherag/intro_cognitive_architectures/blob/6adaa9877bd6f5de9a854f36dc4b18f93b91b6d5/install.sh#L19-L26
+# numpy = "<2"
+opencv-python-headless = ">=4.8.1.78"
+typing-extensions = ">=4.4.0"
+# Adding transitive dependency for ultralytics==8.4.6: numpy>=2.5.0, <2.5.0+
+ultralytics = "==8.4.6"
+lap = ">=0.5.12"
+owlready2 = "*"
+
+[activation.env]
+# Not with the real robot of course
+ROS_AUTOMATIC_DISCOVERY_RANGE = "LOCALHOST"
+
+# TODO: make these Linux only?
+CMAKE_CXX_COMPILER_LAUNCHER = "ccache"
+CMAKE_C_COMPILER_LAUNCHER = "ccache"
+
+# should not be needed, but https://github.com/RoboStack/ros-jazzy/issues/141
+# refs:
+# - https://github.com/gazebosim/ros_gz/pull/659
+# - https://github.com/gazebosim/ros_gz/issues/630
+# - https://github.com/ros-controls/gz_ros2_control/issues/390
+GZ_SIM_SYSTEM_PLUGIN_PATH = "${CONDA_PREFIX}/lib"
