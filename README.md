@@ -6,6 +6,8 @@ It builds.
 
 And Mirte moves in Gazebo.
 
+But `yolo_ros` is unhappy (ie: doesn't work).
+
 ## Building
 
 Note: the Pixi environment and Colcon workspace will require approximately 13 GB of free disk space.
@@ -44,4 +46,11 @@ It's unclear where this package should be sourced from -- or whether it's even s
 
 ### TypeError: only 0-dimensional arrays can be converted to Python scalars
 
-This could be an incompatibility between Python 3.12 (as installed by Pixi) and the `tracking_node` script in `yolo_ros`.
+This could be an incompatibility between numpy (as installed by Pixi) and the  `tracking_node` script in `yolo_ros`.
+
+### incompatible version of numpy
+
+`pip` appears willing to install (potentially) incompatible versions of dependencies.
+Pixi's solver isn't.
+
+Specifically: `numpy<2` and `ultralytics==8.4.6` appear incompatible.
