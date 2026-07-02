@@ -44,4 +44,4 @@ It's unclear where this package should be sourced from -- or whether it's even s
 
 ### TypeError: only 0-dimensional arrays can be converted to Python scalars
 
-This could be an incompatibility between Python 3.12 (as installed by Pixi) and the script(s) in the `cognitive_nav` package.
+This could be an incompatibility between Python 3.12 (as installed by Pixi) and the `tracking_node` script in `yolo_ros`.
